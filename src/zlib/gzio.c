@@ -15,6 +15,7 @@
 #define _BSD_SOURCE       /* for vsnprintf */
 
 #include <stdio.h>
+#include <string.h>
 
 #include "zutil.h"
 
@@ -440,7 +441,8 @@ int ZEXPORT c4_gzread (file, buf, len)
             uInt n = s->stream.avail_in;
             if (n > s->stream.avail_out) n = s->stream.avail_out;
             if (n > 0) {
-                zmemcpy(s->stream.next_out, s->stream.next_in, n);
+                //zmemcpy(s->stream.next_out, s->stream.next_in, n);//broken on fedora 41
+                memcpy(s->stream.next_out, s->stream.next_in, n);//hopefully this doesnt break the game but i CANT FIND any reference to a "zmemcpy" anywhere on the internet
                 next_out += n;
                 s->stream.next_out = next_out;
                 s->stream.next_in   += n;

@@ -1,3 +1,12 @@
+These are the changes I made to get openclonk to compile on Fedora 41, at least on x86. I did not try it on AArch64. I was able to aquire every required depedency through the Fedora dnf repositories. In my case I do enough development on my pc that I only had to install "libjpeg-turbo-devel" to get the libjpeg-turbo package, but your mileage may vary.
+
+Compilation steps
+================
+I am not a cmake expert but these are the steps I took to get the game to compile so that I could get a binary and run the game.
+- mkdir build
+- cmake .
+- make
+
 Requirements
 ============
 You should be able to build OpenClonk with any C++ compiler that supports
